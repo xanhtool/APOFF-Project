@@ -19,6 +19,14 @@ table {
   margin-bottom:50px;
 }
 
+.justify-text{
+  text-align: justify;
+}
+
+.word-wrap {
+  word-wrap: break-word;
+}
+
 .overflow-auto {
   overflow: visible;
   min-height: 208px;
@@ -65,7 +73,7 @@ table {
   margin-right: 5px;
 }
 
-
+// for table be-ing scroll
 /deep/.mat-tab-body {
   overflow: hidden!important;
 }

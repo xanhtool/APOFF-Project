@@ -113,29 +113,6 @@
     <!-- SECTION: POST STATUS WITH PREVIEW LINK -->
     <md-tab label="Đăng bài thông thường">
       <div class="space-top"></div>
-      <!-- SECTION Google SpreadSheet Form -->
-      <!-- <div class="row">
-        <div class="input-field col s12 m5" >
-          <i class="material-icons prefix"><a target="_blank" href="https://docs.google.com/spreadsheets/d/1vUJZUMnCGPxynU9B_6mLpopF0k2giyh4B7FD6A0ZMcw/edit#gid=367521068">web</a></i>
-          <input id="sheetUrl" type="text" class="validate" name="spreadsheetId" [(ngModel)]="ggModel.spreadsheetId" placeholder="Ví dụ: https://docs.google.com/spreadsheets/d/1vUJZUMnCGPxynU9B_6mLpopF0k2giyh4B7FD6A0ZMcw/edit#gid=367521068" (input)="checkSheet(ggModel)">
-          <label for="sheetUrl" class="active">Spreadsheet Id or URL</label>
-        </div>
-        <div class="input-field col s12 m2">
-          <i class="material-icons prefix">vpn_key</i>
-          <input id="appToken" type="text" class="validate" name="token" [(ngModel)]="ggModel.sheetName" placeholder="Mặc định là: 'Sheet1'">
-          <label for="appToken" class="active">Tên Sheet</label>
-        </div>
-        <div class="input-field col s12 m2">
-          <i class="material-icons prefix">person_pin</i>
-          <input  id="fanpageID" type="text" class="validate" name="fanpageID" [(ngModel)]="ggModel.range" placeholder="Mặc định là: 'A2:H'">
-          <label for="fanpageID" class="active">vùng dữ liệu</label>
-        </div>
-        <div class="input-field col s12 m3 center-align">
-          <button class="btn waves-effect waves-light blue" type="submit" name="action"  (click)="sendToFacebook(fbModel)" [ngClass]="{'disabled': content.length == 0 || !selectedFanpage || loading}">Gửi Facebook
-            <i class="material-icons right">send</i>
-          </button>
-        </div>
-      </div> -->
 
       <!-- SECTION warning -->
       <div class="row">
@@ -162,22 +139,22 @@
 
       <table>
          <thead>
-           <tr>
-               <th class='center-align' data-field="id">ID</th>
-               <th class='center-align' data-field="date">Thời gian</th>
-               <th class='center-align'data-field="message">Nội dung</th>
-               <th class='center-align'data-field="message">Link đính kèm (tùy chọn)</th>
-               <th class='center-align'data-field="message">Kết quả</th>
+           <tr class="row">
+               <th class='center-align col s1' data-field="id">ID</th>
+               <th class='center-align col s2' data-field="date">Thời gian</th>
+               <th class='center-align col s5'data-field="message">Nội dung</th>
+               <th class='center-align col s2'data-field="message">Link đính kèm (tùy chọn)</th>
+               <th class='center-align col s2'data-field="message">Kết quả</th>
            </tr>
          </thead>
 
          <tbody>
-           <tr class="hoverable table-row"  onmouseover="console.log('ahihi', this.shit)" onmouseover="" [class.flow-text]="false" *ngFor="let row of content">
-             <td class='center-align' >{{row.id}}</td>
-             <td class='center-align'>{{row.time}}</td>
-             <td >{{row.message}}</td>
-             <td >{{row.link}}</td>
-             <td >
+           <tr class="hoverable table-row row valign-wrapper"  onmouseover="console.log('ahihi', this.shit)" onmouseover="" [class.flow-text]="false" *ngFor="let row of content">
+             <td class='col s1 center-align' >{{row.id}}</td>
+             <td class='col s2 center-align'>{{row.time}}</td>
+             <td class="col s5 justify-text">{{row.message}}</td>
+             <td class="word-wrap col s2 valign"><a [href]="row.link">{{row.link}}</a></td>
+             <td class="col s2">
                <p class='center-align'>{{row.status?.title}}</p>
                 <p>{{row.status?.message}}</p>
              </td>
@@ -196,29 +173,6 @@
     <!-- SECTION: UPLOAD WITH IMAGES AND CAPTION -->
     <md-tab label="Đăng bài kèm ảnh">
       <div class="space-top"></div>
-      <!-- SECTION Google SpreadSheet Form -->
-      <!-- <div class="row">
-        <div class="input-field col s12 m5" >
-          <i class="material-icons prefix"><a target="_blank" href="https://docs.google.com/spreadsheets/d/16IcE8Z7u-CnT_30_BLRs6bWBfU6va4yio0V5FhAzGHU/edit#gid=367521068">web</a></i>
-          <input id="sheetUrl" type="text" class="validate" name="spreadsheetId" [(ngModel)]="ggModelImages.spreadsheetId" placeholder="Ví dụ: https://docs.google.com/" (input)="checkSheetImages(ggModelImages)">
-          <label for="sheetUrl" class="active">Spreadsheet Id or URL</label>
-        </div>
-        <div class="input-field col s12 m2">
-          <i class="material-icons prefix">vpn_key</i>
-          <input id="appToken" type="text" class="validate" name="token" [(ngModel)]="ggModelImages.sheetName" placeholder="Mặc định là: 'Sheet1'">
-          <label for="appToken" class="active">Tên Sheet</label>
-        </div>
-        <div class="input-field col s12 m2">
-          <i class="material-icons prefix">person_pin</i>
-          <input  id="fanpageID" type="text" class="validate" name="fanpageID" [(ngModel)]="ggModelImages.range" placeholder="Mặc định là: 'A2:H'">
-          <label for="fanpageID" class="active">vùng dữ liệu</label>
-        </div>
-        <div class="input-field col s12 m3 center-align">
-          <button class="btn waves-effect waves-light blue" type="submit" name="action"  (click)="sendImagesToFacebook(fbModel)" [ngClass]="{'disabled': contentImages.length == 0 || !selectedFanpage || loading}">Gửi Facebook
-            <i class="material-icons right">send</i>
-          </button>
-        </div>
-      </div> -->
 
       <!-- SECTION warning -->
       <div class="row">
@@ -242,24 +196,26 @@
          <div class="indeterminate"></div>
       </div>
 
-      <table>
+      <table class ="bordered centered responsive-table">
          <thead>
-           <tr>
-               <th class='center-align' data-field="id">ID</th>
-               <th class='center-align' data-field="date">Thời gian</th>
-               <th class='center-align'data-field="message">Nội dung ảnh</th>
-               <th class='center-align'data-field="message">Ảnh</th>
-               <th class='center-align'data-field="message">Kết quả</th>
+           <tr class="row">
+               <th class='center-align col s1' data-field="id">ID</th>
+               <th class='center-align col s2' data-field="date">Thời gian</th>
+               <th class='center-align col s4'data-field="message">Nội dung ảnh</th>
+               <th class='center-align col s3'data-field="picture">Ảnh</th>
+               <th class='center-align col s2'data-field="result">Kết quả</th>
            </tr>
          </thead>
 
          <tbody>
-           <tr class="hoverable table-row"[class.flow-text]="false" *ngFor="let row of contentImages">
-             <td class='center-align' >{{row.id}}</td>
-             <td class='center-align'>{{row.time}}</td>
-             <td >{{row.caption}}</td>
-             <td ><img [src]="row.imageUrl" alt=""></td>
-             <td >
+           <tr class="hoverable table-row row valign-wrapper"[class.flow-text]="false" *ngFor="let row of contentImages">
+             <td class='center-align col s1' >{{row.id}}</td>
+             <td class='center-align col s2'>{{row.time}}</td>
+             <td class="justify-text col s4">{{row.caption}}</td>
+             <td class="col s3 valign" >
+               <img class="responsive-img" [src]="row.imageUrl" alt="">
+             </td>
+             <td class="center-align col s2" >
                <p class='center-align'>{{row.status?.title}}</p>
                 <p>{{row.status?.message}}</p>
              </td>
