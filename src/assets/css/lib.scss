@@ -1,0 +1,8 @@
+// @import '~@angular/material/core/theming/prebuilt/deeppurple-amber.css';
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import 'variables';
+@import '~materialize-css/sass/components/color';
+// $primary-color: #0E5A69 !default;
+// $primary-color-light: lighten($primary-color, 15%) !default; $primary-color-dark: darken($primary-color, 15%) !default;
+$roboto-font-path: "~materialize-css/fonts/roboto/";
+@import '~materialize-css/sass/materialize';

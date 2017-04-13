@@ -1,0 +1,279 @@
+<!-- SECTION 1: BASIC INFOMATION -->
+<div class="container">
+  <form>
+    <h3>Tiêu đề</h3>
+    <div class="row">
+      <div class="col s12 m5">
+        <h5>Bảng tiến trình</h5>
+        <div class="card-panel brown darken-2 z-depth-5">
+          <!-- <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="true" onlogin="loginFB()"></div> -->
+          <button *ngIf="this.status['fbStatus'] != 'checked'" class="btn-flat waves-effect waves-light white-text loginFacebook" type="submit" name="action"  (click)="loginFB()">
+            <i class="fa fa-facebook-square" aria-hidden="true"></i>
+            Đăng nhập Facebook
+            <!-- <i class="material-icons right"><lock_open></lock_open></i> -->
+          </button>
+          <p  *ngIf="this.status['fbStatus'] == 'checked'">
+            <input type="checkbox" class="filled-in" id="filled-in-box-auth-FB" [checked]='status?.fbStatus'/>
+            <label for="filled-in-box-auth-FB">
+              <span class="white-text">
+                Xác thực Facebook xong!
+                <!-- <a (click)="logoutFB()" class="btn">Logout</a> -->
+              </span>
+            </label>
+          </p>
+          <button *ngIf="this.status['ggStatus'] != 'checked'" class="btn-flat waves-effect waves-light white-text loginGoogle" type="submit" name="action"  (click)="loginGG()">
+            <i class="fa fa-google-plus-square" aria-hidden="true"></i>
+            Đăng nhập Google
+            <!-- <i class="material-icons right">lock_open</i> -->
+          </button>
+          <!-- <div class="g-signin2"></div> -->
+          <p  *ngIf="this.status['ggStatus'] == 'checked'">
+            <input type="checkbox" class="filled-in" id="filled-in-box-auth-GG" [checked]='status?.ggStatus'/>
+            <label for="filled-in-box-auth-GG">
+              <span class="white-text">Xác thực Google xong!</span>
+            </label>
+          </p>
+          <!-- <p>
+            <input type="checkbox" class="filled-in" id="filled-in-box-fbtoken"  [checked]='selectedFanpage?.access_token'/>
+            <label for="filled-in-box-fbtoken" ><span class="white-text">Facebook Token: {{selectedFanpage?.access_token || 'chưa có gì' || fbModel?.token}}</span></label>
+          </p> -->
+          <p>
+            <input type="checkbox" class="filled-in" id="filled-in-box-fanpageID"  [checked]='selectedFanpage?.name'/>
+            <label for="filled-in-box-fanpageID"><span class="white-text">Fanpage: {{selectedFanpage?.name || 'không biết'}}</span></label>
+          </p>
+          <p>
+            <input type="checkbox" class="filled-in" id="google-sheet-link"  [checked]='ggModel?.spreadsheetId'/>
+            <label for="google-sheet-link"><span class="white-text">Google Sheet ID or URL: {{ggModel?.spreadsheetId || ggModelImages?.spreadsheetId ||'không biết'}}</span></label>
+          </p>
+
+        </div>
+      </div>
+
+      <div class="col s12 m7">
+        <h5>Bảng nhập thông tin</h5>
+        <div class="card-panel">
+          <!-- user select fanapge -->
+          <div class="input-field row">
+            <i class="material-icons prefix" *ngIf="!fanpageLoading">insert_chart</i>
+            <!-- loading icon -->
+            <div class="material-icons prefix" *ngIf="fanpageLoading">
+              <div class="preloader-wrapper small active">
+              <div class="spinner-layer spinner-blue-only">
+                <div class="circle-clipper left">
+                  <div class="circle"></div>
+                </div><div class="gap-patch">
+                  <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                  <div class="circle"></div>
+                </div>
+              </div>
+              </div>
+            </div>
+            <md-select class="input-field-text" placeholder="Chọn fanpage mà bạn muốn đăng bài" name="selectedFanpage" [(ngModel)]="selectedFanpage">
+               <!-- <md-option [value]="" disabled selected>chọn fanpage của bạn</md-option> -->
+               <md-option *ngFor="let fanpage of fanpageList" [value]="fanpage">{{ fanpage.name }}</md-option>
+            </md-select>
+          </div>
+          <!-- user select mode -->
+          <div class="input-field row">
+            <div class="col m6 negative1rem">
+              <i class="material-icons prefix">add_a_photo</i>
+              <div class="input-field-text">
+                <p>Chế độ đăng bài kèm ảnh</p>
+              </div>
+            </div>
+            <div class="col m6 push-m1">
+              <md-slide-toggle class="input-field-label" [checked]="imageMode" labelPosition="before" name="imageMode" [(ngModel)]="imageMode"></md-slide-toggle>
+            </div>
+          </div>
+          <!-- *IF imageMode: user enter source to post with image-->
+          <div *ngIf="imageMode; else normalMode" class="input-field row">
+            <i class="material-icons prefix"><a target="_blank" href="http://bit.ly/2oDSa3I">add_a_photo</a></i>
+            <input id="sheetUrl" type="text" class="validate" name="spreadsheetId" [(ngModel)]="ggModelImages.spreadsheetId" (input)="checkSheetImages(ggModelImages)">
+            <label for="sheetUrl" class="active">link file spreadsheet chứa bài viết</label>
+          </div>
+          <!--*IF normalMode: user enter source to post-->
+          <ng-template #normalMode>
+            <div class="input-field row">
+              <i class="material-icons prefix"><a target="_blank" href="http://bit.ly/2oLw5wY">text_format</a></i>
+              <input id="sheetUrl" type="text" class="validate" name="spreadsheetId" [(ngModel)]="ggModel.spreadsheetId"  (input)="checkSheet(ggModel)">
+              <label for="sheetUrl" class="active">link file spreadsheet chứa bài viết</label>
+            </div>
+          </ng-template>
+
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<!-- SECTION 2: SPECIFIC INFOMATION -->
+<div class="container">
+  <h5>Bảng kết quả</h5>
+  <md-tab-group  class="tab_overflow" [selectedIndex]="imageMode ? '1':'0'" (selectedIndexChange)="change($event)">
+    <!-- SECTION: POST STATUS WITH PREVIEW LINK -->
+    <md-tab label="Đăng bài thông thường">
+      <div class="space-top"></div>
+      <!-- SECTION Google SpreadSheet Form -->
+      <!-- <div class="row">
+        <div class="input-field col s12 m5" >
+          <i class="material-icons prefix"><a target="_blank" href="https://docs.google.com/spreadsheets/d/1vUJZUMnCGPxynU9B_6mLpopF0k2giyh4B7FD6A0ZMcw/edit#gid=367521068">web</a></i>
+          <input id="sheetUrl" type="text" class="validate" name="spreadsheetId" [(ngModel)]="ggModel.spreadsheetId" placeholder="Ví dụ: https://docs.google.com/spreadsheets/d/1vUJZUMnCGPxynU9B_6mLpopF0k2giyh4B7FD6A0ZMcw/edit#gid=367521068" (input)="checkSheet(ggModel)">
+          <label for="sheetUrl" class="active">Spreadsheet Id or URL</label>
+        </div>
+        <div class="input-field col s12 m2">
+          <i class="material-icons prefix">vpn_key</i>
+          <input id="appToken" type="text" class="validate" name="token" [(ngModel)]="ggModel.sheetName" placeholder="Mặc định là: 'Sheet1'">
+          <label for="appToken" class="active">Tên Sheet</label>
+        </div>
+        <div class="input-field col s12 m2">
+          <i class="material-icons prefix">person_pin</i>
+          <input  id="fanpageID" type="text" class="validate" name="fanpageID" [(ngModel)]="ggModel.range" placeholder="Mặc định là: 'A2:H'">
+          <label for="fanpageID" class="active">vùng dữ liệu</label>
+        </div>
+        <div class="input-field col s12 m3 center-align">
+          <button class="btn waves-effect waves-light blue" type="submit" name="action"  (click)="sendToFacebook(fbModel)" [ngClass]="{'disabled': content.length == 0 || !selectedFanpage || loading}">Gửi Facebook
+            <i class="material-icons right">send</i>
+          </button>
+        </div>
+      </div> -->
+
+      <!-- SECTION warning -->
+      <div class="row">
+        <div class="col s12 m12">
+          <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+              <span class="card-title">Bảng thông báo</span>
+              <p>Chúng tôi đã kiểm tra và có kết quả sau:</p>
+              <ul>
+                <li><p>- Số bài viết hợp lệ từ Google Sheet {{content.length}}/{{totalMessagesNumber}}</p></li>
+                <li><p>- Số bài viết đã gửi facebook {{totalMessagesSentToFacebook || 0 }}/{{content.length}}</p></li>
+            </ul>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION table -->
+      <div *ngIf="loading" class="progress">
+         <div class="indeterminate"></div>
+      </div>
+
+
+      <table>
+         <thead>
+           <tr>
+               <th class='center-align' data-field="id">ID</th>
+               <th class='center-align' data-field="date">Thời gian</th>
+               <th class='center-align'data-field="message">Nội dung</th>
+               <th class='center-align'data-field="message">Link đính kèm (tùy chọn)</th>
+               <th class='center-align'data-field="message">Kết quả</th>
+           </tr>
+         </thead>
+
+         <tbody>
+           <tr class="hoverable table-row"  onmouseover="console.log('ahihi', this.shit)" onmouseover="" [class.flow-text]="false" *ngFor="let row of content">
+             <td class='center-align' >{{row.id}}</td>
+             <td class='center-align'>{{row.time}}</td>
+             <td >{{row.message}}</td>
+             <td >{{row.link}}</td>
+             <td >
+               <p class='center-align'>{{row.status?.title}}</p>
+                <p>{{row.status?.message}}</p>
+             </td>
+           </tr>
+         </tbody>
+       </table>
+       <div class="divider"></div>
+       <div class="input-field col s12 m3 center-align">
+         <button class="btn waves-effect waves-light blue" type="submit" name="action"  (click)="sendToFacebook(fbModel)" [ngClass]="{'disabled' : content.length == 0 || !selectedFanpage || loading}">Gửi Facebook
+           <i class="material-icons right">send</i>
+         </button>
+       </div>
+
+      <div class="margin-bottom"></div>
+    </md-tab>
+    <!-- SECTION: UPLOAD WITH IMAGES AND CAPTION -->
+    <md-tab label="Đăng bài kèm ảnh">
+      <div class="space-top"></div>
+      <!-- SECTION Google SpreadSheet Form -->
+      <!-- <div class="row">
+        <div class="input-field col s12 m5" >
+          <i class="material-icons prefix"><a target="_blank" href="https://docs.google.com/spreadsheets/d/16IcE8Z7u-CnT_30_BLRs6bWBfU6va4yio0V5FhAzGHU/edit#gid=367521068">web</a></i>
+          <input id="sheetUrl" type="text" class="validate" name="spreadsheetId" [(ngModel)]="ggModelImages.spreadsheetId" placeholder="Ví dụ: https://docs.google.com/" (input)="checkSheetImages(ggModelImages)">
+          <label for="sheetUrl" class="active">Spreadsheet Id or URL</label>
+        </div>
+        <div class="input-field col s12 m2">
+          <i class="material-icons prefix">vpn_key</i>
+          <input id="appToken" type="text" class="validate" name="token" [(ngModel)]="ggModelImages.sheetName" placeholder="Mặc định là: 'Sheet1'">
+          <label for="appToken" class="active">Tên Sheet</label>
+        </div>
+        <div class="input-field col s12 m2">
+          <i class="material-icons prefix">person_pin</i>
+          <input  id="fanpageID" type="text" class="validate" name="fanpageID" [(ngModel)]="ggModelImages.range" placeholder="Mặc định là: 'A2:H'">
+          <label for="fanpageID" class="active">vùng dữ liệu</label>
+        </div>
+        <div class="input-field col s12 m3 center-align">
+          <button class="btn waves-effect waves-light blue" type="submit" name="action"  (click)="sendImagesToFacebook(fbModel)" [ngClass]="{'disabled': contentImages.length == 0 || !selectedFanpage || loading}">Gửi Facebook
+            <i class="material-icons right">send</i>
+          </button>
+        </div>
+      </div> -->
+
+      <!-- SECTION warning -->
+      <div class="row">
+        <div class="col s12 m12">
+          <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+              <span class="card-title">Bảng thông báo</span>
+              <p>Chúng tôi đã kiểm tra và có kết quả sau:</p>
+              <ul>
+                <li><p>- Số bài viết hợp lệ từ Google Sheet {{contentImages.length}}/{{totalMessageImagesNumber}}</p></li>
+                <li><p>- Số bài viết đã gửi facebook {{totalImagesSentToFacebook || 0 }}/{{contentImages.length}}</p></li>
+            </ul>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION table -->
+      <div *ngIf="loading" class="progress">
+         <div class="indeterminate"></div>
+      </div>
+
+      <table>
+         <thead>
+           <tr>
+               <th class='center-align' data-field="id">ID</th>
+               <th class='center-align' data-field="date">Thời gian</th>
+               <th class='center-align'data-field="message">Nội dung ảnh</th>
+               <th class='center-align'data-field="message">Ảnh</th>
+               <th class='center-align'data-field="message">Kết quả</th>
+           </tr>
+         </thead>
+
+         <tbody>
+           <tr class="hoverable table-row"[class.flow-text]="false" *ngFor="let row of contentImages">
+             <td class='center-align' >{{row.id}}</td>
+             <td class='center-align'>{{row.time}}</td>
+             <td >{{row.caption}}</td>
+             <td ><img [src]="row.imageUrl" alt=""></td>
+             <td >
+               <p class='center-align'>{{row.status?.title}}</p>
+                <p>{{row.status?.message}}</p>
+             </td>
+           </tr>
+         </tbody>
+       </table>
+       <div class="divider"></div>
+       <div class="input-field col s12 m3 center-align">
+         <button class="btn waves-effect waves-light blue" type="submit" name="action"  (click)="sendImagesToFacebook(fbModel)" [ngClass]="{'disabled' : contentImages.length == 0 || !selectedFanpage || loading}">Gửi Facebook
+           <i class="material-icons right">send</i>
+         </button>
+       </div>
+
+      <div class="margin-bottom"></div>
+    </md-tab>
+  </md-tab-group>
+</div>

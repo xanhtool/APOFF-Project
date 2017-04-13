@@ -1,3 +1,75 @@
-<h1>
-  {{title}}
-</h1>
+
+<ul id="slide-out" class="side-nav">
+  <li><div class="userView">
+    <img src="./assets/img/logo.png" alt="logo XanhTool"><h3 class="blue-text">XanhTool</h3>
+  </div></li>
+  <li><a href="#!" [routerLinkActiveOptions]="{ exact: true }" routerLink="" routerLinkActive="active" >TRANG CHỦ</a></li>
+  <li class="no-padding">
+    <ul class="collapsible" data-collapsible="expandable">
+      <li>
+        <a class="collapsible-header active resetpadding">
+          THÔNG TIN <span><i class="material-icons right">arrow_drop_down</i></span>
+        </a>
+        <div class="collapsible-body">
+          <ul>
+            <li><a pageScroll routerLink="about" href="#huongdan">Hướng dẫn sử dụng</a></li>
+            <li><a pageScroll routerLink="about" href="#ungdung">Giới thiệu ứng dụng</a></li>
+            <li> <a pageScroll routerLink="about" href="#developer">Giới thiệu nhà phát triển</a></li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+
+<header>
+  <div class="navbar-fixed">
+    <nav >
+    <div class="nav-wrapper">
+      <a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
+       <a class="brand-logo center brown-text text-lighten-5" href="#!" [routerLinkActiveOptions]="{ exact: true }" routerLink="" routerLinkActive="active" >Tự động đăng bài trên Fanpage</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="#!" [routerLinkActiveOptions]="{ exact: true }" routerLink="" routerLinkActive="active" >Trang chủ</a></li>
+        <li><a routerLink="posting" routerLinkActive="active" >Đăng bài</a></li>
+        <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Thông tin<i class="material-icons right">arrow_drop_down</i></a></li>
+        <ul id='dropdown1' class='dropdown-content'>
+          <li><a pageScroll routerLink="about" href="#huongdan">Hướng dẫn sử dụng</a></li>
+          <li><a pageScroll routerLink="about" href="#ungdung">Giới thiệu ứng dụng</a></li>
+          <li> <a pageScroll routerLink="about" href="#developer">Giới thiệu nhà phát triển</a></li>
+        </ul>
+      </ul>
+    </div>
+  </nav>
+  </div>
+</header>
+
+
+<main>
+  <router-outlet></router-outlet>
+</main>
+
+<footer class="page-footer">
+         <div class="container">
+           <div class="row">
+             <div class="col l6 s12">
+               <h5 class="white-text">Thông tin liên hệ</h5>
+               <p class="grey-text text-lighten-4">email:hiepxanh@gmail.com</p>
+               <p class="grey-text text-lighten-4">Facebook: <a class="grey-text text-lighten-3" href="https://www.facebook.com/hiepsieuviet">https://www.facebook.com/hiepsieuviet</a></p>
+             </div>
+             <div class="col l4 offset-l2 s12">
+               <h5 class="white-text">Links</h5>
+               <ul>
+                 <li><a class="grey-text text-lighten-3" href="https://developers.facebook.com/tools/explorer">Facebook Explorer</a></li>
+                 <li><a class="grey-text text-lighten-3" href="https://docs.google.com/spreadsheets/d/1vUJZUMnCGPxynU9B_6mLpopF0k2giyh4B7FD6A0ZMcw/edit#gid=367521068">File Excel Demo</a></li>
+               </ul>
+             </div>
+           </div>
+         </div>
+         <div class="footer-copyright">
+           <div class="container">
+           © 2017 Copyright Xanhtool
+           <a class="grey-text text-lighten-4 right" href="https://xanhtool.github.io">xanhtool.github.io</a>
+           </div>
+         </div>
+       </footer>

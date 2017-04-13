@@ -1,0 +1,71 @@
+
+
+.table-row {
+  text-align: justify;
+  transition: .3s ease all;
+}
+
+.table-row:hover{
+  // @extend .flow-text;
+  background-color: #ffcdd2;
+}
+
+.progress {
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+
+table {
+  margin-bottom:50px;
+}
+
+.overflow-auto {
+  overflow: visible;
+  min-height: 208px;
+}
+
+.input-field-text {
+  margin-left: 3rem;
+  display: inline-block;
+}
+
+.negative1rem i,p {
+  margin-left: -1rem;
+}
+
+
+
+.margin-bottom {
+  margin-bottom: 20px;
+}
+
+.space-top {
+  margin-top: 20px;
+}
+
+.loginFacebook {
+  background-color: #4267b2;
+  min-width:250px;
+  text-align: left;
+  margin-top: 5px;
+}
+
+.loginFacebook i {
+  margin-right: 5px;
+}
+
+.loginGoogle {
+  background-color: #dd4b39;
+  min-width:250px;
+  text-align: left;
+  margin-top: 25px;
+}
+
+.loginGoogle i {
+  margin-right: 5px;
+}
+
+
+/deep/.mat-tab-body {
+  overflow: hidden!important;
+}

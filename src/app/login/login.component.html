@@ -1,0 +1,15 @@
+<h3>Behavior status: {{ authStateService.stateStatus() | async  }}</h3>
+<h3>Behavior profile: {{ (authStateService.getProfile() | async)?.isSignedIn.get()  }}</h3>
+<hr>
+
+<h1>Login</h1>
+<div id="my-signin2" (data-onsuccess)="onSignIn"></div>
+ <button *ngIf="isSignedIn" (click)="handleSignoutClick()">Sign Out</button>
+  <button *ngIf="isSignedIn2" (click)="handleSignoutClick()">Sign Out 2</button>
+ <h3>status isSignedIn: {{isSignedIn}}</h3>
+<h3>status isSignedIn2: {{isSignedIn2}}</h3>
+
+
+
+<!-- 2 -->
+<!-- <div id="googleBtn">Google</div> -->

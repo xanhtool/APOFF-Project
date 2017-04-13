@@ -1,0 +1,162 @@
+import { Component, OnInit, NgZone } from '@angular/core';
+
+declare var gapi: any;
+
+@Component({
+  selector: 'app-demo',
+  templateUrl: './demo.component.html',
+  styleUrls: ['./demo.component.css']
+})
+export class DemoComponent implements OnInit {
+
+  // testing for ngZone
+
+  progress: number = 0;
+
+  constructor( private ngZone: NgZone ){
+  }
+
+  processWithinAngularZone() {
+    this.progress = 0;
+    this.increaseProgress(() => console.log('Done!'));
+  }
+
+  processOutsideAngularZone() {
+  this.progress = 0;
+  this.ngZone.runOutsideAngular(() => {
+    this.increaseProgress(() => {
+      this.ngZone.run(() => {
+        console.log('Outside Done!');
+      });
+    });
+  });
+}
+
+  increaseProgress(doneCallback: () => void) {
+  this.progress += 1;
+  console.log(`Current progress: ${this.progress}%`);
+
+  if (this.progress < 100) {
+    window.setTimeout(() => {
+      this.increaseProgress(doneCallback);
+    }, 10);
+  } else {
+    doneCallback();
+  }
+}
+  // Done testing for ngZone
+
+  public client: any;
+  public authorizeButton = document.getElementById('authorize-button');
+  public signoutButton = document.getElementById('signout-button');
+  public loggedIn: boolean ;
+  public content = document.getElementById('content');
+
+  ngOnInit() {
+    console.log('init state of loggedIn', this.loggedIn);
+  }
+
+  ngAfterViewInit() {
+
+    let that = this;
+    console.log("this:",this)
+    gapi.load('client:auth2', function () {
+      console.log('loading gapi')
+      that.client = gapi.client.init({
+        discoveryDocs: ["https://sheets.googleapis.com/$discovery/rest?version=v4"],
+       clientId: "731057771960-tvdglt2iflc98e9cuoddpj7rc2qealjd.apps.googleusercontent.com",
+       scope: "https://www.googleapis.com/auth/spreadsheets.readonly"
+      })
+      .then(function () {
+        console.log("then...")
+      // // Listen for sign-in state changes.
+      gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
+
+      // Handle the initial sign-in state.
+      updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+
+       function updateSigninStatus(isSignedIn) {
+        console.log('calling update Signin Status', isSignedIn);
+        if (isSignedIn) {
+          console.log("signedIn from demo");
+
+          that.ngZone.run(() => {
+            that.loggedIn = true;
+          });
+
+          console.log("logging status", that.loggedIn);
+          that.listMajors();
+        } else {
+          console.log("not sign-in yet");
+
+          that.ngZone.run(() => {
+            that.loggedIn = false;
+          });
+          // that.loggedIn = false;
+
+          console.log("logging status", that.loggedIn);
+       }
+     };
+
+    });
+  });
+
+ }
+
+  appendPre(message) {
+   var textContent = document.createTextNode(message + '\n');
+   this.content.appendChild(textContent);
+  }
+
+
+
+  /**
+  *  Sign in the user upon button click.
+  */
+  handleAuthClick() {
+    console.log("clicked loggIn button")
+     gapi.auth2.getAuthInstance().signIn();
+
+     console.log("logging status", this.loggedIn);
+   };
+
+   /**
+    *  Sign out the user upon button click.
+    */
+  handleSignoutClick() {
+    console.log("clicked loggedOut button")
+     gapi.auth2.getAuthInstance().signOut();
+     console.log("logging status", this.loggedIn);
+   };
+
+  listMajors() {
+    console.log('calling google sheet');
+    gapi.client.sheets.spreadsheets.values.get({
+        spreadsheetId: '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms',
+        range: 'Class Data!A2:E',
+      }).then(function(response) {
+        var range = response.result;
+        console.log(range);
+
+      //   if (range.values.length > 0) {
+      //     console.log("this:",this)
+      //   //  this.appendPre('Name, Major:');
+      //    for (let i = 0; i < range.values.length; i++) {
+      //      var row = range.values[i];
+      //      // Print columns A and E, which correspond to indices 0 and 4.
+      //      this.appendPre(row[0] + ', ' + row[4]);
+      //    }
+      //  } else {
+      //    this.appendPre('No data found.');
+      //  }
+       })
+      // , function(response) {
+      //   this.appendPre('Error: ' + response.result.error.message);
+      // }
+  };
+
+  onSignIn(googleUser) {
+  console.log(googleUser);
+  };
+
+}

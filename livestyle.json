@@ -1,0 +1,3 @@
+{
+    "globals": ["src/assets/css/lib.scss", "src/app/*.scss",  "src/app/*.css"]
+}
