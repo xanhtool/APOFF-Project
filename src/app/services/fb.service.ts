@@ -9,7 +9,7 @@ declare var FB: any;
 export class FbService {
   sentImagesNumber$:any = new BehaviorSubject(0);
   sentMessagesNumber$:any = new BehaviorSubject(0);
-  fanpageList$ = new Subject();
+  fanpageList$ = new BehaviorSubject(null);
   loginStatus$ = new BehaviorSubject(null);
   loader$:any = Observable.bindCallback(FB.init);
   reloader$ = this.loader$({
@@ -189,6 +189,7 @@ export class FbService {
   }
 
   fanpageList() {
+    console.log('returning fanpagelist Observer')
     return this.fanpageList$;
   }
 

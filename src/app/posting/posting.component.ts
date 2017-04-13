@@ -165,18 +165,18 @@ export class PostingComponent implements OnInit {
   getFanpage() {
     console.log('get fanpage')
     // if (this.userToken && this.userToken != '') {
-      this.fanpageLoading = true;
-      this.fbService.fanpageList()
-      .subscribe(res => {
-        console.info('what the fucking is',this.selectedFanpage)
-        // console.log(res)
-        this.fanpageLoading = false;
-        this.ngZone.run(()=>{
-          console.log("object?",typeof(res),res)
-          this.fanpageList = res;
-          console.log(this.fanpageList);
-        })
+    this.fanpageLoading = true;
+    this.fbService.fanpageList()
+    .subscribe(res => {
+      console.info('what the fucking is',this.selectedFanpage)
+      console.log("the response from Observer fanpageList",res)
+      this.fanpageLoading = false;
+      this.ngZone.run(()=>{
+        console.log("object?",typeof(res),res)
+        this.fanpageList = res;
+        console.log(this.fanpageList);
       })
+    })
 
     // }
   }
