@@ -6,3 +6,8 @@
   margin-right: auto;
   margin-left: auto;
 }
+
+/*for table be-ing scroll*/
+/deep/.mat-tab-body {
+  overflow: hidden!important;
+}

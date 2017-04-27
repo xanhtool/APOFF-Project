@@ -17,6 +17,8 @@ export class GgService {
 
    loginStatus$ = new BehaviorSubject(null);
 
+   userProfile$ = new BehaviorSubject(null);
+
    spreadsheetId:any;
    sheetId:any;
    messagesNumber$ = new Subject();
@@ -27,12 +29,16 @@ export class GgService {
     .mergeMap(loader => Observable.fromPromise(gapi.client.init(this.clientOptions))) // with gapi loader create client stream from promise
     .do(() => this.loginStatus$.next(gapi.auth2.getAuthInstance().isSignedIn.get())) // emit the first state
     .do(() => gapi.auth2.getAuthInstance().isSignedIn.listen((res) => {
-      console.log(res);
       this.loginStatus$.next(res);
     })) // watch signin or out status
     .subscribe((res) => {
-
+      this.userProfile$.next(gapi.auth2.getAuthInstance().currentUser.get().getBasicProfile());
+        console.log('thông tin user',gapi.auth2.getAuthInstance().currentUser.get().getBasicProfile());
     })
+  }
+
+  getUserProfile() {
+    return this.userProfile$
   }
 
   getLoginStatus() {

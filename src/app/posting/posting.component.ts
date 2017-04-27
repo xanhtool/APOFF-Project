@@ -1,5 +1,7 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 
+import { Angulartics2 } from 'angulartics2';
+
 import { FbService } from '../services/fb.service';
 import { GgService } from '../services/gg.service'
 import {MdSnackBar} from '@angular/material';
@@ -43,6 +45,7 @@ export class PostingComponent implements OnInit {
     private fbService: FbService,
     private ggService: GgService,
     public snackBar: MdSnackBar,
+    private angulartics2: Angulartics2
   ) {
     // update text field
     $(document).ready(function() {
@@ -71,12 +74,21 @@ export class PostingComponent implements OnInit {
   }
 
   change(event){
-    if (event == '1') this.imageMode = true
+    if (event == '1') {
+      this.imageMode = true;
+      //Track: chế độ đăng bài
+      this.angulartics2.eventTrack.next({ action: 'Chọn chế độ', properties: { category: 'Chế độ đăng bài', label: 'Đăng bài kèm ảnh' }});
+    }
     else this.imageMode = false;
+
   }
 
 
   checkSheet(ggModel){
+    //Track: chế độ đăng bài
+    if(this.imageMode == false) {
+      this.angulartics2.eventTrack.next({ action: 'Chọn chế độ', properties: { category: 'Chế độ đăng bài', label: 'Đăng bài thông thường' }});
+    }
 
     if(ggModel.spreadsheetId && ggModel.spreadsheetId.length > 0) {
       this.loading = true;
@@ -93,6 +105,7 @@ export class PostingComponent implements OnInit {
       .subscribe(res=>{
       this.ngZone.run(() =>{
         this.content = res;
+
         this.loading = false;
         console.info(`valid data ${this.content.length}/${this.totalMessagesNumber}`)
         this.snackBar.open('Sync data successfuly from google SpreadSheet', '', {
@@ -129,6 +142,16 @@ export class PostingComponent implements OnInit {
         console.log("total",res);
         this.ngZone.run(() =>{
           this.totalMessagesSentToFacebook = res;
+          //TRACK: totalMessagesSentToFacebook:
+          this.ggService.getUserProfile().subscribe((res) =>{
+            this.angulartics2.eventTrack.next(
+              {
+                action: 'Gửi bài viết',
+                properties: { category: res.U3, label: 'Số bài viết đã gửi' }
+              }
+            );
+          });
+          // ENDTRACK
         })
       })
     })

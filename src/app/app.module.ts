@@ -20,6 +20,7 @@ import { PostingComponent } from './posting/posting.component';
 import { MaterialModule } from '@angular/material';
 import { AppRoutingModule } from './app-routing.module';
 import {Ng2PageScrollModule} from 'ng2-page-scroll';
+import { Angulartics2Module, Angulartics2GoogleTagManager  } from 'angulartics2';
 
 // Addtition providers
 // import  { GapiService } from './services/gapi.service';
@@ -47,7 +48,8 @@ import { GgService } from './services/gg.service';
     BrowserAnimationsModule,
     [MaterialModule.forRoot()],
     AppRoutingModule,
-    Ng2PageScrollModule.forRoot()
+    Ng2PageScrollModule.forRoot(),
+    Angulartics2Module.forRoot([ Angulartics2GoogleTagManager  ])
   ],
   providers: [
     FbService,

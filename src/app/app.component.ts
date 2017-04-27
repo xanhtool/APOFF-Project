@@ -1,5 +1,5 @@
 import { Component, NgZone, OnInit } from '@angular/core';
-// import { AuthStateService } from './services/auth-state.service';
+import { Angulartics2GoogleTagManager  } from 'angulartics2';
 import { Observable, Subject, BehaviorSubject } from 'rxjs';
 
 declare var $:any;
@@ -22,7 +22,8 @@ export class AppComponent implements OnInit {
 
   constructor(
     // private authStateService: AuthStateService,
-    private ngZone: NgZone
+    private ngZone: NgZone,
+    angulartics2GoogleTagManager : Angulartics2GoogleTagManager 
   ) {
     $(document).ready(function(){
       $('.collapsible').collapsible('show');

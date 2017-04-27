@@ -1,314 +1,220 @@
-<!-- <ul id="slide-out" class="side-nav fixed hidden-on-small">
-   <li><div class="userView">
-     <img src="./assets/img/logo.png" alt="logo XanhTool"><h3>{{pageName}}</h3>
-   </div></li>
-
- </ul>
- <a  href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a> -->
-
 <div class="container">
+  <div id="ungdung">
+    <h3>Giới thiệu ứng dụng</h3>
+    <div class="row">
+      <div class="col s12">
+        <md-tab-group>
+          <md-tab label="Giới thiệu chung">
+            <h5>Ứng dụng tạo ra để làm gì ?</h5>
+            <p>Lên lịch cho 4 fanpage với một đống bài viết sẽ chỉ đơn giản chỉ trong vài phút với nội dung soạn sẵn thay vì cả tiếng đồng hồ.</p>
+            <p>Thử tưởng tượng bạn cần đăng 3 bài viết 1 tuần, 12 bài viết 1 tháng cho 4 fanpage khác nhau thì tổng cộng là 48 bài viết. Thay vì click vào từng fanpage, gõ nội dung và chọn thời gian cho từng bài, thì bạn chỉ việc làm việc đó ra spreadsheet của google. Việc còn lại ASPOFF sẽ tự động đọc nội dung, chọn thời gian và ấn nút lên lịch giúp bạn. </p>
+            <h5>Ai là người phù hợp cần sử dụng ?</h5>
+            <p>Đối tượng phù hợp là: <br> - Những người quản lý nhiều fanpage <br> - Những người cần xây các bot fanpage vệ tinh <br> Các đơn vị quảng cáo cho các doanh nghiệp; cần đăng rất nhiều bài content marketing mà không thể lúc nào cũng dành cả tháng để đăng bài được vì còn phải phục vụ cho rất nhiều khách hàng </p>
+            <p>Cần đăng bài một cách có hệ thống hoặc đăng nhiều bài cùng lúc cho rảnh để làm việc khác.</p>
+            <h5>Thời gian có thể hẹn giờ đăng bài là bao nhiêu ?</h5>
+            <p>Từ 10 phút đến 6 tháng sau sau thời điểm lên lịch đăng bài, thời gian bị giới hạn bởi facebook chỉ cho phép như vậy là tối đa. Ví dụ: bạn đăng bài viết vào lúc 12h ngày 01/01/2017 thì thời điểm bạn có thể hẹn giờ là: 12h10' ngày 01/01/2017 và tối đa là 12h ngày 01/06/2017. quá thời hạn trên thì bài viết không thể đăng. </p>
+          </md-tab>
+          <md-tab label="Tính năng chính">
+            <h5>Tính năng chính</h5>
+            <ul>
+              <li>- Đăng hàng loạt bài viết lên lịch trước: bài viết có thể kèm theo link với ảnh xem trước của link đó.</li>
+              <li>- Đăng hàng loạt bài viết kèm theo ảnh: ảnh từ nguồn (link) nhất định và có kèm theo đoạn văn mô tả.</li>
+              <li>- Lấy dữ liệu từ google spreadsheet: dữ liệu được đồng bộ trực tiếp với google spreadsheet dưới dạng bảng.</li>
+              <li>- Đồng bộ ngược trở lại spreadsheet: dữ liệu không hợp lệ sẽ được đánh dấu màu đỏ với từ "không hợp lệ". chỉ những dữ liệu hợp lệ mới được hiển thị trong bảng ở trong trang web.</li>
+            </ul>
+          </md-tab>
+          <md-tab label="Phiên bản">
+            <h5>Thông tin thay đổi (changelog):</h5>
+            <h6>Phiên bản: 1.0 Alpha 1/03/2017</h6>
+            <p>Tính năng:</p>
+            <ul>
+              <li>Đăng nhập và ủy quyền cơ bản cho WebApp từ google và facebook</li>
+              <li>Lấy dữ liệu fanpage từ facebook API</li>
+              <li>Lấy dữ liệu bài viết từ Google Spreadsheet API</li>
+              <li>Gửi dữ liệu đã lấy được từ sheet cho facebook</li>
+            </ul>
+            <h6>Phiên bản: 1.1 Alpha 16/03/2017</h6>
+            <p>Tính năng:</p>
+            <ul>
+              <li>THÊM tính năng nút đăng nhập bằng facebook và google.</li>
+              <li>THÊM tính năng báo tiến trình bằng bảng ghi chú màu nâu.</li>
+              <li>THÊM thanh báo màu đen mỗi khi đồng bộ xong từ google spreasheet hoặc đồng bộ bị lỗi</li>
+              <li>TẠO trang hướng dẫn sử dụng</li>
+            </ul>
+            <h6>Phiên bản: 1.2 Alpha 23/03/2017</h6>
+            <p>Tính năng:</p>
+            <ul>
+              <li>THÊM tính năng báo dữ liệu đã được đồng bộ ở cột status trong "bảng tiến trình"</li>
+              <li>THÊM tính năng báo số bài viết hợp lệ từ google spreasheet và số bài viết đã đăng lên facebook trong "bảng thông báo".</li>
+              <li>THÊM tính năng đồng bộ hóa ngược trở lại google spreadsheet, đánh dấu từng bài viết cụ thể một không hợp lệ về mặt thời gian.</li>
+              <li>THÊM hướng dẫn chi tiết, changelog trong trang hướng dẫn sử dụng</li>
+            </ul>
+            <h6>Phiên bản: 1.3 Alpha 16/04/2017</h6>
+            <p>Tính năng:</p>
+            <ul>
+              <li>LOẠI công đoạn nhập token thủ công bởi người dùng, thay vào đó là cấp quyền đăng bài cho ứng dụng làm tự động</li>
+              <li>THÊM trang chủ.</li>
+              <li>SỬA toàn bộ trang hướng dẫn.</li>
+            </ul>
+          </md-tab>
+        </md-tab-group>
+      </div>
+    </div>
+  </div>
+  <div class="divider"></div>
   <div id="huongdan">
     <div class="row">
       <h3>Hướng dẫn sử dụng</h3>
       <div class="row">
         <div class="col s12">
-          <ul class="tabs">
-            <li class="tab col s3"><a href="#test1">Bố cục ứng dụng</a></li>
-            <li class="tab col s3"><a class="active" href="#test2">Các bước thực hiện</a></li>
-            <li class="tab col s3"><a href="#test3">Video hướng dẫn</a></li>
-            <li class="tab col s3"><a href="#test4">Nâng cao</a></li>
-          </ul>
-        </div>
-        <div id="test1" class="col s12">
-          <h5>Ứng dụng được phân ra làm 3 phần lần lượt là</h5>
-          <ul class="collapsible" data-collapsible="accordion">
-            <li>
-              <div class="collapsible-header"><i class="material-icons">filter_drama</i>Bảng tiếng trình</div>
-              <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-            </li>
-            <li>
-              <div class="collapsible-header"><i class="material-icons">place</i>Bảng nhập thông tin</div>
-              <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-            </li>
-            <li>
-              <div class="collapsible-header"><i class="material-icons">whatshot</i>Bảng kết quả</div>
-              <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-            </li>
-          </ul>
-        </div>
-        <div id="test2" class="col s12">
-          <h5>Có tổng cộng 3 bước như sau</h5>
-          <ul class="collapsible" data-collapsible="accordion">
-            <li>
-              <div class="collapsible-header"><i class="material-icons">filter_drama</i>Bước 1: Đăng nhập</div>
-              <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-            </li>
-            <li>
-              <div class="collapsible-header"><i class="material-icons">place</i>Bước 2: chọn fanpage</div>
-              <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-            </li>
-            <li>
-              <div class="collapsible-header"><i class="material-icons">whatshot</i>Bước 3: nhập nội dung</div>
-              <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-            </li>
-          </ul>
-        </div>
-        <div id="test3" class="col s12">
-          <div class="row">
-            <div class="col s4">
-              <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/hIN6or9XRS0" frameborder="0" allowfullscreen></iframe>
+          <md-tab-group (selectChange)="reInitCollapsible()">
+            <md-tab label="Bố cục ứng dụng">
+              <h5>Ứng dụng được phân ra làm 3 phần lần lượt là</h5>
+              <ul class="collapsible" data-collapsible="accordion">
+                <li>
+                  <div class="collapsible-header"><i class="material-icons">filter_drama</i>Bảng tiếng trình</div>
+                  <div class="collapsible-body">
+                    <p>Bảng này phản ánh mức độ hoàn thành công việc để đăng bài, nếu đạt đủ các yêu cầu cần thiết thì tất cả có dấu tích và nút gửi facebook sẽ hoạt động.</p>
+                    <img src="http://sv1.upsieutoc.com/2017/04/16/bangtientrinh.png" alt="">
+                    <p>Lúc đầu người dùng đăng nhập tài khoản facebook để ủy quyền việc quản lý fanpage và đăng bài cho ứng dụng. Đăng nhập google để ứng dụng đọc dữ liệu từ file spreadsheet do người dùng cung cấp.</p>
+                  </div>
+                </li>
+                <li>
+                  <div class="collapsible-header"><i class="material-icons">place</i>Bảng nhập thông tin</div>
+                  <div class="collapsible-body">
+                    <p>Bảng này yêu cầu người dùng nhập lựa chọn của mình</p>
+                    <img src="http://sv1.upsieutoc.com/2017/04/16/bangcapnhatthongtin.png" alt="">
+                    <p>Ban đầu, người dùng lựa chọn fanpage mình đang quản lý mà có quyền đăng bài.</p>
+                    <p>Tiếp theo, người dùng lựa chọn chế độ đăng bài: đăng bài chỉ có văn bản (có thể kèm theo link hoặc không) hoặc đăng bài có nội dung kèm theo bức ảnh minh họa. Ảnh sẽ được upload lên tường của fanpage.</p>
+                    <p>Cuối cùng, người dùng nhập link google spreadsheet có chứa các bài viết mình sẽ đăng sau đó ấn vào vùng bên ngoài bất kì, dữ liệu sẽ tự động được lấy về.</p>
+                    <img src="http://sv1.upsieutoc.com/2017/04/16/taobansao.png" alt="">
+                    <p>Biểu tượng chữ A <img src="http://sv1.upsieutoc.com/2017/04/16/texticon.png" alt="">(hoặc cái ảnh <img src="http://sv1.upsieutoc.com/2017/04/16/photoicon.png" alt="">) màu xanh phía trước chứa đường dẫn của file mẫu,file này có nội dung cần thiết mà người dùng phải nhập vào để có thể đăng bài viết. Người dùng có thể nhanh chóng tạo một file tương tự bằng cách ấn vào bảng chọn File > chọn duplicate (tạo bản sao)</p>
+                  </div>
+                </li>
+                <li>
+                  <div class="collapsible-header"><i class="material-icons">whatshot</i>Bảng kết quả</div>
+                  <div class="collapsible-body">
+                    <p>Bảng kết quả hiển thị số bài viết đã lấy được từ google và có gửi đến facebook thành công hay không</p>
+                    <img src="http://sv1.upsieutoc.com/2017/04/16/bangketqua.png" alt="">
+                    <p>Nếu người dùng chưa lấy dữ liệu từ google thì bảng sẽ không xuất hiện</p>
+                  </div>
+                </li>
+              </ul>
+            </md-tab>
+            <md-tab label="Các bước thực hiện">
+              <h5>Có tổng cộng 3 bước như sau</h5>
+              <ul class="collapsible" data-collapsible="accordion">
+                <li>
+                  <div class="collapsible-header"><i class="material-icons">filter_drama</i>Bước 1: Đăng nhập</div>
+                  <div class="collapsible-body">
+                    <img src="http://sv1.upsieutoc.com/2017/04/16/buoc1dangnhap.png" alt="">
+                    <p>lần lượt ấn vào 2 nút đăng nhập!</p>
+                  </div>
+                </li>
+                <li>
+                  <div class="collapsible-header"><i class="material-icons">place</i>Bước 2: chọn fanpage</div>
+                  <div class="collapsible-body">
+                    <img src="http://sv1.upsieutoc.com/2017/04/16/buoc2chonfanpagevachedomuondang.png" alt="">
+                    <p>chọn fanpage mà mình mong muốn, đồng thời chọn chế độ đăng bài kèm ảnh hay không</p>
+                  </div>
+                </li>
+                <li>
+                  <div class="collapsible-header"><i class="material-icons">whatshot</i>Bước 3: nhập nội dung</div>
+                  <div class="collapsible-body">
+                    <img src="http://sv1.upsieutoc.com/2017/04/16/buoc4.png" alt="">
+                    <p>Dán đường dẫn chứa file spreadsheet sau đó ấn ra một vùng bên ngoài bất kì để chạy ứng dụng</p>
+                    <img src="http://sv1.upsieutoc.com/2017/04/16/buoc3annutgui.png" alt="">
+                    <p>sau khi lấy dữ liệu về, kiểm tra lại lần cuối trước khi gửi và ấn nút màu xanh "gửi facebook"</p>
+                  </div>
+                </li>
+              </ul>
+            </md-tab>
+            <md-tab label="Video hướng dẫn">
+              <div class="row">
+                <div class="col s4">
+                  <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/Q-fiWXx0TGg" frameborder="0" allowfullscreen></iframe>
+                  </div>
+                </div>
+                <div class="col s4 offset-s2">
+                  <h5>Video hướng dẫn</h5>
+                </div>
               </div>
-            </div>
-            <div class="col s4 offset-s2">
-              <h5>Video hướng dẫn</h5>
-            </div>
-          </div>
-        </div>
-        <div id="test4" class="col s12">
-          <h5>Một số lưu ý cụ thể</h5>
-          <ul class="collapsible" data-collapsible="accordion">
-            <li>
-              <div class="collapsible-header"><i class="material-icons">filter_drama</i>Về chế độ đăng bài</div>
-              <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-            </li>
-            <li>
-              <div class="collapsible-header"><i class="material-icons">place</i>Về tính hợp lệ bài viết</div>
-              <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-            </li>
-            <li>
-              <div class="collapsible-header"><i class="material-icons">whatshot</i>Về thời gian đăng bài</div>
-              <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-            </li>
-          </ul>
-        </div>
-      </div>
+            </md-tab>
+            <md-tab label="Lưu ý">
+              <h5>Một số lưu ý cụ thể</h5>
+              <ul class="collapsible" data-collapsible="accordion">
+                <li>
+                  <div class="collapsible-header"><i class="material-icons">filter_drama</i>Về chế độ đăng bài</div>
+                  <div class="collapsible-body">
+                    <p>Đăng bài gồm hai chế độ: </p>
+                    <md-list>
+                     <md-list-item> Đăng bài thông thường: là chế độ có nội dung soạn sẵn trong file spreadsheet. Các bài viết trong này chỉ bao gồm văn bản và kèm theo link bất kì hoặc không</md-list-item>
+                     <md-list-item> Đăng bài kèm ảnh: là chế độ có nội dung soạn sẵn trong file spreadsheet. Các bài viết trong này có chú thích kèm theo ảnh hoặc không</md-list-item>
+                    </md-list>
+                  </div>
+                </li>
+                <li>
+                  <div class="collapsible-header"><i class="material-icons">place</i>Về tính hợp lệ bài viết</div>
+                  <div class="collapsible-body">
+                    <p>Bài viết chỉ hợp lệ khi không nằm ngoài khoảng thời gian quy định và không bị trùng với bài viết đã đăng.</p>
+                  </div>
+                </li>
+                <li>
+                  <div class="collapsible-header"><i class="material-icons">whatshot</i>Về thời gian đăng bài</div>
+                  <div class="collapsible-body">
+                    <p>Bài viết hẹn giờ hợp lệ chỉ trong khoảng thời gian là: 10 phút từ sau thời điểm lên lịch đến tối đa không quá 6 tháng.</p>
+                    <a href="https://www.facebook.com/business/help/community/question/?id=10209517198872431">Thông tin chi tiết tại đây.</a>
 
-    </div>
-    <!-- <div class="row">
-      <h3 >Hướng dẫn sử dụng</h3>
-      <div class="col s12 m6 flow-text">
-        <div class="card">
-          <div class="card-image">
-            <img class="materialboxed" width="650" src="http://sv1.upsieutoc.com/2017/03/22/todo.png" alt="">
-          </div>
-          <div class="card-content">
-            <p>Bảng trạng thái nội dung cần cung cấp</p>
-            <p>Với mỗi bước thực hiện đúng, bảng sẽ tự đánh dấu tích đã hoàn thành</p>
-          </div>
+                  </div>
+                </li>
+              </ul>
+            </md-tab>
+          </md-tab-group>
+        </div>
 
-        </div>
-      </div>
-      <div class="col s12 m6 flow-text">
-        <h5>Những việc cần làm</h5>
-        <p>Bước 1: Lần lượt click vào 2 nút "xác thực" để ủy quyền việc post bài</p>
-        <p>Bước 2: Điền mã ứng dụng từ Facebook</p>
-        <p>bước 3: Chọn tên Fanpage</p>
-        <p>Bước 4: Pate link googlesheet</p>
-        <p>Bước 5: ấn nút gửi</p>
       </div>
     </div>
-    <div class="divider"></div>
-    <div class="row">
-      <h5>Video hướng dẫn</h5>
-      <div class="col s12 m6">
-        <div class="video-container">
-          <iframe width="853" height="480" src="https://www.youtube.com/embed/hIN6or9XRS0" frameborder="0" allowfullscreen></iframe>
-        </div>
-      </div>
-    </div>
-    <div class="divider"></div>
-    <div class="row">
-      <h5>Hướng dẫn chi tiết bước 1: Click vào 2 nút "xác thực"</h5>
-      <div class="col s12 m6 flow-text">
-        <div class="card">
-           <div class="card-image">
-             <img class="materialboxed" width="650"  src="http://sv1.upsieutoc.com/2017/03/22/button.png" alt="Click vào 2 nút xác thực">
-           </div>
-           <div class="card-content">
-             <p>lần lượt ấn vào 2 nút để xác thực quyền đăng bài trên facebook và quyền cho phép sử dụng bảng tính với google spreadsheet</p>
-           </div>
-        </div>
-      </div>
-    </div>
-    <div class="divider"></div>
-    <div class="row">
-      <h3 >Hướng dẫn chi tiết</h3>
-      <h5>Hướng dẫn chi tiết bước 2: Điền mã ứng dụng từ Facebook</h5>
-      <div class="col s12 m6 flow-text">
-        <div class="card">
-             <div class="card-image">
-               <img class="materialboxed" width="650"  src="http://sv1.upsieutoc.com/2017/03/22/token.png" alt="nhận mã">
-             </div>
-             <div class="card-content">
-               <p>Ấn vào biểu tượng xanh lá giống trong hình hoặc vào <a href="https://developers.facebook.com/tools/explorer">facebook API Explorer</a> để lấy mã truy cập (token) </p>
-             </div>
-        </div>
-      </div>
-      <div class="col s12 m6 flow-text">
-        <div class="card">
-             <div class="card-image">
-               <img class="materialboxed" width="650" src="http://sv1.upsieutoc.com/2017/02/28/nhanma.png" alt="nhận mã">
-             </div>
-             <div class="card-content">
-               <p>Ấn vào phần nhận mã để lấy mã truy cập người dùng</p>
-             </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-        <div class="col s12 m6 flow-text">
-          <div class="card">
-             <div class="card-image">
-               <img class="materialboxed" width="650" src="http://sv1.upsieutoc.com/2017/03/07/matruycapnguoidung.png" alt="lấy mã truy cập người dùng">
-             </div>
-             <div class="card-content">
-               <p>Click vào ô lấy mã truy cập người dùng, sau đó copy đoạn mã bên trái để sử dụng</p>
-             </div>
-          </div>
-        </div>
-        <div class="col s12 m6 flow-text">
-          <div class="card">
-           <div class="card-image">
-             <img class="materialboxed" width="650" src="http://sv1.upsieutoc.com/2017/03/07/pate.png" alt="pate">
-           </div>
-           <div class="card-content">
-            <p>dán mã vào ô "Mã ứng dụng"</p>
-            <p>copy toàn bộ phần "Mã truy cập" vào ô "Mã ứng dụng"</p>
-            <p>Lưu ý: token chỉ có thời hạn sử dụng 1 tiếng. do facebook cấm tình trạng sử dụng token liên tục để đăng bài hàng loạt để spam. làm tương tự bước trên để lấy mã mới</p>
-           </div>
-          </div>
-        </div>
-      </div>
-    <div class="divider"></div>
-    <div class="row">
-      <h5>Hướng dẫn chi tiết bước 3: chọn tên fanpage</h5>
-      <div class="col s12 m6 flow-text">
-        <div class="card">
-           <div class="card-image">
-             <img class="materialboxed" width="650" src="http://sv1.upsieutoc.com/2017/03/22/selectfanpage.png" alt="chọn tên fanpage">
-           </div>
-           <div class="card-content">
-             <p>Click chọn một trong số fanpage mình quản lý</p>
-           </div>
-        </div>
-      </div>
-    </div>
-    <div class="divider"></div>
-    <div class="row">
-      <h5>Hướng dẫn chi tiết bước 4: Pate link googlesheet</h5>
-      <div class="col s12 m6 flow-text">
-        <div class="card">
-           <div class="card-image">
-             <img class="materialboxed" width="650" src="http://sv1.upsieutoc.com/2017/03/22/selecttab.png" alt="chọn tên fanpage">
-           </div>
-           <div class="card-content">
-             <p>Đầu tiên: Tùy vào loại bài muốn đăng mà chọn tab tương ứng,nếu chỉ muốn đăng status có thể có link mà không kèm ảnh: chọn tab 1. Muốn đăng status có ảnh: chọn tab 2</p>
-             <p>Tiếp theo: Tạo file googlesheet tương tự file mẫu, có 2 mẫu, mẫu dăng status có kèm link và mẫu đăng ảnh. Ấn vào biểu tượng màu xanh giống trong hình hoặc vào <a href="https://docs.google.com/spreadsheets/d/1vUJZUMnCGPxynU9B_6mLpopF0k2giyh4B7FD6A0ZMcw/edit#gid=367521068">đây</a> để lấy file mẫu đăng status và
-              <a href="https://docs.google.com/spreadsheets/d/16IcE8Z7u-CnT_30_BLRs6bWBfU6va4yio0V5FhAzGHU/edit#gid=367521068">đây</a> để lấy file mẫu đăng ảnh.</p>
-             <p>Cuối cùng: Pate địa chỉ đường dẫn của file mẫu vào ô trống (có thể pate ID của file googlesheet nếu muốn). dữ liệu sẽ được đồng bộ, nếu thời gian của bài đăng ở trong quá khứ hoặc không nằm trong khoảng 10 phút đến 6 tháng thì sẽ không được hiển thị ở trong bảng.</p>
-           </div>
-        </div>
-      </div>
-    </div>
-    <div class="divider"></div>
-    <div class="row">
-      <div class="col s12 m6 flow-text">
-        <h5>Hướng dẫn chi tiết bước 5: ấn nút gửi</h5>
-        <p> Xin vui lòng ấn nút to màu xanh có chữ "gửi facebook"</p>
-      </div>
-    </div> -->
-  </div>
-  <div id="ungdung">
-    <h3>Giới thiệu ứng dụng</h3>
-    <div class="row">
-    <div class="col s12">
-      <ul class="tabs">
-        <li class="tab col s4"><a href="#gioithieuchung">Giới thiệu chung</a></li>
-        <li class="tab col s4"><a class="active" href="#tinhnangchinh">Tính năng chính</a></li>
-        <li class="tab col s4"><a href="#phienban">Phiên bản</a></li>
-      </ul>
-    </div>
-    <div id="gioithieuchung" class="col s12">
-      <h5>Ứng dụng tạo ra để làm gì ?</h5>
-      <p>Ứng dụng được tạo ra nhằm giúp đỡ các nhà quản lý fanpage thuận tiện trong việc đăng số lượng lớn bài viết cần hẹn giờ trong khoảng thời gian từ 10 phút đến 6 tháng sau sau thời điểm hiện tại. (thời gian bị giới hạn bởi facebook chỉ cho phép như vậy là tối đa)</p>
-    </div>
-    <div id="tinhnangchinh" class="col s12">
-      <h5>Tính năng chính</h5>
-      <ul>
-        <li>- Đăng status tự động: status dưới dạng văn bản, có thể kèm theo link với ảnh xem trước.</li>
-        <li>- Đăng ảnh tự động: ảnh có thể xem trước, kèm theo đoạn văn mô tả.</li>
-        <li>- Lấy dữ liệu từ google spreadsheet: dữ liệu được đồng bộ trực tiếp với google spreadsheet dưới dạng bảng.</li>
-        <li>- Đồng bộ ngược trở lại spreadsheet: dữ liệu không hợp lệ sẽ được đánh dấu màu đỏ với từ "không hợp lệ". chỉ những dữ liệu hợp lệ mới được hiển thị trong bảng ở trong trang web.</li>
-      </ul>
-    </div>
-    <div id="phienban" class="col s12">
-      <h5>Thông tin thay đổi (changelog):</h5>
-      <h6>Phiên bản: 1.0 Alpha 1/03/2017</h6>
-      <p>Tính năng:</p>
-      <ul>
-        <li>Đăng nhập và ủy quyền cơ bản cho WebApp từ google và facebook</li>
-        <li>Lấy dữ liệu fanpage từ facebook API</li>
-        <li>Lấy dữ liệu bài viết từ Google Spreadsheet API</li>
-        <li>Gửi dữ liệu đã lấy được từ sheet cho facebook</li>
-      </ul>
-      <h6>Phiên bản: 1.1 Alpha 16/03/2017</h6>
-      <p>Tính năng:</p>
-      <ul>
-        <li>THÊM tính năng nút đăng nhập bằng facebook và google.</li>
-        <li>THÊM tính năng báo tiến trình bằng bảng ghi chú màu nâu.</li>
-        <li>THÊM thanh báo màu đen mỗi khi đồng bộ xong từ google spreasheet hoặc đồng bộ bị lỗi</li>
-        <li>TẠO trang hướng dẫn sử dụng</li>
-      </ul>
-      <h6>Phiên bản: 1.2 Alpha 23/03/2017</h6>
-      <p>Tính năng:</p>
-      <ul>
-        <li>THÊM tính năng báo dữ liệu đã được đồng bộ ở cột status trong "bảng tiến trình"</li>
-        <li>THÊM tính năng báo số bài viết hợp lệ từ google spreasheet và số bài viết đã đăng lên facebook trong "bảng thông báo".</li>
-        <li>THÊM tính năng đồng bộ hóa ngược trở lại google spreadsheet, đánh dấu từng bài viết cụ thể một không hợp lệ về mặt thời gian.</li>
-        <li>THÊM hướng dẫn chi tiết, changelog trong trang hướng dẫn sử dụng</li>
-      </ul>
-    </div>
-  </div>
   </div>
   <div class="divider"></div>
   <div id="developer">
     <h3>Giới thiệu nhà phát triển</h3>
     <div class="row">
-    <div class="col s12">
-      <ul class="tabs">
-        <li class="tab col s3"><a href="#gioithieunhaphattrien">Giới thiệu chung</a></li>
-        <li class="tab col s3"><a class="active" href="#congnhesudung">Công Nghệ sử dụng</a></li>
-        <li class="tab col s3"><a href="#lamgi">Làm gì tiếp theo</a></li>
-        <li class="tab col s3"><a href="#lienhe">Liên hệ</a></li>
-      </ul>
+      <div class="col s12">
+        <md-tab-group>
+          <md-tab label="Giới thiệu chung">
+            <h5>Giới thiệu nhà phát triển</h5>
+            <p>Trần Quang Hiệp, hiện tại đang phát triển các ứng dụng có ích cho cộng đồng, đặc biệt là website và các ứng dụng tự động hóa công việc thường ngày.</p>
+            <p>Bất kỳ trao đổi nào về ứng dụng, cũng như tham gia phát triển về dự án này hay muốn tạo thêm bất kỳ ứng dụng nào khác hãy liên lạc với mình để cùng trao đổi và phát triển thêm.</p>
+          </md-tab>
+          <md-tab label="Công Nghệ sử dụng">
+            <h5>Công nghệ sử dụng</h5>
+            <p>Ứng dụng sử dụng angular 2 và các thư viện liên quan, thuần 100% frontend gọi API và xác thực thông qua các API của Google và Facebook. GIao diện được thiết kế trên bộ thư viện materialize-css và Jquery.</p>
+            <p>Bên cạnh những thư viện cơ bản thì mình cũng đang sử dụng:</p>
+            <ul>
+              <li>- API Google spreadsheet, API GoogleAPI library, API facebook fanpage.</li>
+              <li>- Thư viện RXJS xử lý toàn bộ các request, event, emitter sự kiện.</li>
+            </ul>
+            <h5>Nhận xét</h5>
+            <p>Jquery dùng kèm với materializecss thực sự không phù hợp với các dự án angular 2 khi thường xuyên phải init trước khi sử dụng. Mình buộc phải dùng materialize angular trước sau đó còn thiếu component nào mới dùng đến materialzecss.</p>
+          </md-tab>
+          <md-tab label="Làm gì tiếp theo">
+            <h5>Làm gì tiếp theo ?</h5>
+            <p>Với ứng dụng này, là một ứng dụng dựa trên nền tảng angular 2, mình dự định sẽ phát triển thêm module AOT (tăng tốc độ), Universal (server-side rendering), Meta Service (hỗ trợ SEO), và Translator Service (phục vụ các bạn nước ngoài).</p>
+            <p>Ngoài ứng dụng này, mình mong muốn tiếp tục phát triển thêm nhiều ứng dụng hay dựa trên nền tảng angular như ứng dụng tra cứu điểm, phân phối lớp, quản lý lớp học, quản lý giáo trình.v.v... hay thậm chí là Internet Of Thing với NodeJS nhưng do năng lực có hạn và chưa có đội ngũ phát triển, rất mong mọi người cùng hợp tác cũng như hỗ trợ.</p>
+            <h5>Dự án tiếp theo: Law Engine.</h5>
+            <p>Thông tin: truy suất văn bản pháp luật hiệu suất cao. Thay vì phải mở văn bản và tìm kiếm bằng cách Ctr+F hoặc cuộn chuột thì mình sẽ xây dựng một hệ thống mục lục tương ứng từng điều để tra cứu. thiết kế trên nền web với giao diện thân thiện.</p>
+            <p>Nền tảng: web được build bởi angular-cli, android được build bởi Ionic 2, windows universal app (chạy trên máy tính và điện thoại window phone) được build bởi Electron</p>
+          </md-tab>
+          <md-tab label="Liên hệ">
+            <h5>Địa chỉ liên hệ</h5>
+            <p>Facebook: <a href="https://www.facebook.com/HiepTran26/">https://www.facebook.com/HiepTran26/</a></p>
+            <p>Email: hiepxanh@gmail.com</p>
+            <p>Nếu bất kì câu hỏi nào hay mong muốn hợp tác. làm ơn liên hệ với mình ngay cho nóng nhé!</p>
+          </md-tab>
+        </md-tab-group>
+      </div>
     </div>
-    <div id="gioithieunhaphattrien" class="col s12">
-      <h5>Giới thiệu nhà phát triển</h5>
-      <p>Trần Quang Hiệp, hiện tại đang phát triển các ứng dụng có ích cho cộng đồng, đặc biệt là website và các ứng dụng tự động hóa công việc thường ngày.</p>
-      <p>Bất kỳ trao đổi nào về ứng dụng, cũng như tham gia phát triển về dự án này hay muốn tạo thêm bất kỳ ứng dụng nào khác hãy liên lạc với mình để cùng trao đổi và phát triển thêm.</p>
-    </div>
-    <div id="congnhesudung" class="col s12">
-      <h5>Công nghệ sử dụng</h5>
-      <p>Ứng dụng sử dụng angular 2 và các thư viện liên quan, thuần 100% frontend gọi API và xác thực thông qua các API của Google và Facebook. GIao diện được thiết kế trên bộ thư viện materialize-css và Jquery.</p>
-      <p>Bên cạnh những thư viện cơ bản thì mình cũng đang sử dụng:</p>
-      <ul>
-        <li>- API Google spreadsheet, API GoogleAPI library, API facebook fanpage.</li>
-        <li>- Thư viện RXJS xử lý toàn bộ các request, event, emitter sự kiện.</li>
-      </ul>
-    </div>
-    <div id="lamgi" class="col s12">
-      <h5>Làm gì tiếp theo ?</h5>
-      <p>Mình mong muốn tiếp tục phát triển thêm nhiều ứng dụng hay dựa trên nền tảng angular như ứng dụng tra cứu điểm, phân phối lớp, quản lý lớp học, quản lý giáo trình.v.v... hay thậm chí là Internet Of Thing với NodeJS nhưng do năng lực có hạn và chưa có đội ngũ phát triển, rất mong mọi người cùng hợp tác cũng như hỗ trợ.</p>
-    </div>
-    <div id="lienhe" class="col s12">
-      <h5>Địa chỉ liên hệ</h5>
-      <p>Facebook: <a href="https://www.facebook.com/hiepsieuviet">https://www.facebook.com/hiepsieuviet</a></p>
-      <p>Email: hiepxanh@gmail.com</p>
-      <p>Nếu bất kì câu hỏi nào hay mong muốn hợp tác. làm ơn liên hệ với mình ngay cho nóng nhé!</p>
-    </div>
-  </div>
-
   </div>
 </div>
 <div class="margin-bottom"></div>
